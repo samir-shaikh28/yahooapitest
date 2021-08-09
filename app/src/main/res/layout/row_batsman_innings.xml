@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="group"
+            type="com.droidtechlab.yahooapi.ui.listitem.BatsmanInningsListItem" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/batsman_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/run_title"
+        android:layout_width="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/batsman_name"
+        android:text="R"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ball_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintLeft_toRightOf="@id/run_title"
+        app:layout_constraintTop_toBottomOf="@id/batsman_name"
+        android:text="B"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fours_title"
+        android:layout_width="0dp"
+        android:layout_marginTop="12dp"
+
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintLeft_toRightOf="@id/ball_title"
+        app:layout_constraintTop_toBottomOf="@id/batsman_name"
+        android:text="4s"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/six_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintLeft_toRightOf="@id/fours_title"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/batsman_name"
+        android:text="6s"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/runrate_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintLeft_toRightOf="@id/six_title"
+        app:layout_constraintTop_toBottomOf="@id/batsman_name"
+        android:text="S/R"
+        app:layout_constraintWidth_percent="0.2" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/run"
+        android:layout_width="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/run_title"
+        android:text="R"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ball"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintLeft_toRightOf="@id/run"
+        app:layout_constraintTop_toBottomOf="@id/ball_title"
+        android:text="B"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fours"
+        android:layout_width="0dp"
+        android:layout_marginTop="12dp"
+
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintLeft_toRightOf="@id/ball"
+        app:layout_constraintTop_toBottomOf="@id/fours_title"
+        android:text="4s"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/six"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintLeft_toRightOf="@id/fours"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/six_title"
+        android:text="6s"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/runrate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintLeft_toRightOf="@id/six"
+        app:layout_constraintTop_toBottomOf="@id/runrate_title"
+        android:text="S/R"
+        app:layout_constraintWidth_percent="0.2" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_howout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/run"
+        android:layout_marginTop="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

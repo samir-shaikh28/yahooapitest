@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     const val BASE_URL = "https://cricket.yahoo.net/"
-    var retrofit: Retrofit? = null
+    private var retrofit: Retrofit? = null
 
     var httpBuilder = OkHttpClient.Builder()
     val logging =  HttpLoggingInterceptor().apply {

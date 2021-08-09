@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.droidtechlab.yahooapi.ui.listitem.AbstractListItem
+import com.droidtechlab.yahooapi.BR
 
 class GenericRecyclerAdapter(private val listCustomModel: List<AbstractListItem>) :
     RecyclerView.Adapter<GenericRecyclerAdapter.ViewHolder>() {

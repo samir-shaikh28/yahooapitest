@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/activity_main.xml" value="0.21979166666666666" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/fragment_commentary.xml" value="0.1" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/fragment_main.xml" value="0.1" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/fragment_match_info.xml" value="0.1" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/fragment_score_card.xml" value="0.21302083333333333" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/fragment_splash_screen.xml" value="0.1203125" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/fragment_summary.xml" value="0.21302083333333333" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/generic_recycler_fragment.xml" value="0.3880208333333333" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/row_batsman_innings.xml" value="0.25" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/row_bowler_innings.xml" value="0.21979166666666666" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/row_fall_of_wickets.xml" value="0.21979166666666666" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/row_match_info.xml" value="0.3880208333333333" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/layout/row_subtitle.xml" value="0.375" />
+        <entry key="../../androidStudioProjects/yahooapi/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21302083333333333" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

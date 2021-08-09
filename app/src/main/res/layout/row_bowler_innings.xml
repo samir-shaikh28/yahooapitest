@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="group"
+            type="com.droidtechlab.yahooapi.ui.listitem.BowlerInningsListItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bowler_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/over_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="O"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bowler_name"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/maidens_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="M"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/over_title"
+            app:layout_constraintTop_toBottomOf="@id/bowler_name"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/runs_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="R"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/maidens_title"
+            app:layout_constraintTop_toBottomOf="@id/bowler_name"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wicket_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="W"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/runs_title"
+            app:layout_constraintTop_toBottomOf="@id/bowler_name"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/no_ball_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="NB"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/wicket_title"
+            app:layout_constraintTop_toBottomOf="@id/bowler_name"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wide_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="WD"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/no_ball_title"
+            app:layout_constraintTop_toBottomOf="@id/bowler_name"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/economy_rate_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="E/R"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/wide_title"
+            app:layout_constraintTop_toBottomOf="@id/bowler_name"
+            app:layout_constraintWidth_percent="0.1425" />
+        <!---->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/over"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/over_title"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/maidens"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/over"
+            app:layout_constraintTop_toBottomOf="@id/maidens_title"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/runs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/maidens"
+            app:layout_constraintTop_toBottomOf="@id/runs_title"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wicket"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/runs"
+            app:layout_constraintTop_toBottomOf="@id/wicket_title"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/no_ball"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/wicket"
+            app:layout_constraintTop_toBottomOf="@id/no_ball_title"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wide"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/no_ball"
+            app:layout_constraintTop_toBottomOf="@id/wide_title"
+            app:layout_constraintWidth_percent="0.1425" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/economy_rat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="0.0"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintLeft_toRightOf="@id/wide"
+            app:layout_constraintTop_toBottomOf="@id/economy_rate_title"
+            app:layout_constraintWidth_percent="0.1425" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
