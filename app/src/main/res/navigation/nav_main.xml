@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/splashScreenFragment">
 
 
@@ -19,5 +18,12 @@
         android:id="@+id/mainFragment"
         android:name="com.droidtechlab.yahooapi.ui.MainFragment"
         android:label="MainFragment" />
+
+
+    <fragment
+        android:id="@+id/scoreCardFragment2"
+        android:name="com.droidtechlab.yahooapi.ui.ScoreCardFragment"
+        android:label="ScoreCardFragment" />
+
 
 </navigation>

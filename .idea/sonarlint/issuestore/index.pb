@@ -3,7 +3,23 @@
 Kapp/src/main/java/com/droidtechlab/yahooapi/ui/listitem/AbstractListItem.kt,0/b/0be10fdbb62b0d40e894df0c4dd5d5bd37c048e6
 {
 Kapp/src/main/java/com/droidtechlab/yahooapi/utils/VerticalItemDecoration.kt,a/a/aa66e2f8fe4bf3f8fadc6544e6246c08bba9944b
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 q
 Aapp/src/main/java/com/droidtechlab/yahooapi/utils/NetworkUtils.kt,6/c/6cf1c2b0073dceaa8bafa200294440e698ec6ff2
+Å
+Qapp/src/main/java/com/droidtechlab/yahooapi/ui/listitem/BatsmanInningsListItem.kt,6/d/6d427d4558b30aa856e3b49d6e4600c5391eba0e
+í
+bapp/src/main/java/com/droidtechlab/yahooapi/data/db/entities/converters/BattingEntityConverters.kt,9/9/998d378ffa1a59e7a308233251833cfd4887ec0a
+Ä
+Papp/src/main/java/com/droidtechlab/yahooapi/ui/listitem/BowlerInningsListItem.kt,f/d/fdf79f69781d7aee43852e06236b7f7031024e25
+q
+Aapp/src/main/java/com/droidtechlab/yahooapi/data/db/DBInstance.kt,4/c/4c4bb0158a9cfb11ee65c8853588743b9a595c99
+
+Oapp/src/main/java/com/droidtechlab/yahooapi/ui/listitem/FallOfWicketListItem.kt,3/f/3fab267214b782d47c11e3ee46c44e191203de89
+k
+;app/src/main/java/com/droidtechlab/yahooapi/MainActivity.kt,0/6/061f86ffdda5dae4b23cb05438c941c6979480b8
+s
+Capp/src/main/java/com/droidtechlab/yahooapi/data/network/Results.kt,1/5/1509fbea0f6a84faa82532028dc475cc547e9d13
+{
+Kapp/src/main/java/com/droidtechlab/yahooapi/ui/listitem/SubTitleListItem.kt,d/8/d8007dd99c2448d5cc40e8b4a96e58769fc54c60
+Å
+Qapp/src/main/java/com/droidtechlab/yahooapi/data/response/YahooResponseHandler.kt,4/6/46cb8a200f04384e983904142291cf39069621a2

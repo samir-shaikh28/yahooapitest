@@ -32,7 +32,6 @@ class SplashScreenFragment : Fragment() {
     private lateinit var interactor: Interactor
     private lateinit var yahooDao: YahooDao
     private lateinit var navController: NavController
-    private lateinit var navHostFragment: NavHostFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -76,7 +76,7 @@ object DBHelper {
     fun toInningsEntity(innings: Innings): InningsEntity {
         return innings.run {
             InningsEntity(
-                _id = 0,
+                _id = battingTeam?.toInt()!!,
                 battingTeam = battingTeam,
                 number = number,
                 total = total,
@@ -91,6 +91,7 @@ object DBHelper {
                 allotedOvers = allotedOvers,
                 batsmanList = toBatsmenEntity(batsmenObj),
                 bowlerList = toBowlerEntity(bowlersObj),
+                fallOfWicketList  = toFallOfWickets(fallOfWickets),
                 currentartnerShip = toCurrentPartnerShipEntity(
                     currentPartnership ?: CurrentPartnerShip()
                 ),
@@ -121,8 +122,8 @@ object DBHelper {
     }
 
     @JvmStatic
-    private fun toParnerBatsmanEntity(partnerBatsmenList: List<PartnerBatsmen>): List<PartnerBatsmenEntity> {
-        val listOfPartnerBatsmanEntity = mutableListOf<PartnerBatsmenEntity>()
+    private fun toParnerBatsmanEntity(partnerBatsmenList: List<PartnerBatsmen>): ArrayList<PartnerBatsmenEntity> {
+        val listOfPartnerBatsmanEntity = arrayListOf<PartnerBatsmenEntity>()
         partnerBatsmenList.forEach {
             it.apply {
                 listOfPartnerBatsmanEntity.add(
@@ -138,8 +139,8 @@ object DBHelper {
     }
 
     @JvmStatic
-    private fun toBowlerEntity(bowlersList: List<BowlersObj>?): List<BowlerInInningsEntity> {
-        val listOfBowlerEntity = mutableListOf<BowlerInInningsEntity>()
+    private fun toBowlerEntity(bowlersList: List<BowlersObj>?): ArrayList<BowlerInInningsEntity> {
+        val listOfBowlerEntity = arrayListOf<BowlerInInningsEntity>()
         bowlersList?.forEach { bowlerObj ->
             bowlerObj.apply {
                 listOfBowlerEntity.add(
@@ -160,9 +161,25 @@ object DBHelper {
         return listOfBowlerEntity
     }
 
+    private fun toFallOfWickets(fallOfWicketList: List<FallofWickets>? ) : ArrayList<FallOfWicketEntity> {
+        val listOFFallOfWickets = arrayListOf<FallOfWicketEntity>()
+        fallOfWicketList?.forEach { fallofWickets ->
+            fallofWickets.apply {
+                listOFFallOfWickets.add(
+                    FallOfWicketEntity(
+                        batsmanCode = batsmanId,
+                        score = scores,
+                        overs = overs
+                    )
+                )
+            }
+        }
+        return listOFFallOfWickets
+    }
+
     @JvmStatic
-    private fun toBatsmenEntity(batsmenList: List<BatsmenObj>?): List<BatsmenInInningsEntity> {
-        val listOfBatsmanEntity = mutableListOf<BatsmenInInningsEntity>()
+    private fun toBatsmenEntity(batsmenList: List<BatsmenObj>?): ArrayList<BatsmenInInningsEntity> {
+        val listOfBatsmanEntity = arrayListOf<BatsmenInInningsEntity>()
         batsmenList?.forEach { batsmenObj ->
             batsmenObj.apply {
                 listOfBatsmanEntity.add(

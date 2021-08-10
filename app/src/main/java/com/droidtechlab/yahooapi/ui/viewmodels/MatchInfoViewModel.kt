@@ -7,14 +7,9 @@ import com.droidtechlab.yahooapi.data.db.entities.MatchInfoEntity
 import com.droidtechlab.yahooapi.data.network.Results
 import com.droidtechlab.yahooapi.data.repo.DataSourceRepo
 
-class MatchInfoViewModel(var repo: DataSourceRepo) : ViewModel() {
+class MatchInfoViewModel : ViewModel() {
 
     val matchInfoEntityLiveData = MutableLiveData<MatchInfoEntity>()
-
-    fun fetchMatchInfo(): MutableLiveData<Results<MatchInfoEntity>> {
-        return repo.fetchMatchInfo()
-
-    }
 
     fun updateUI(matchInfoEntity: MatchInfoEntity) {
         matchInfoEntityLiveData.postValue(matchInfoEntity)

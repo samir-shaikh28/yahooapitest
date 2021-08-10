@@ -16,13 +16,15 @@ import com.droidtechlab.yahooapi.data.network.Failure
 import com.droidtechlab.yahooapi.data.network.Success
 import com.droidtechlab.yahooapi.data.repo.DataSourceRepo
 import com.droidtechlab.yahooapi.databinding.FragmentMatchInfoBinding
-import com.droidtechlab.yahooapi.ui.viewmodels.MatchInfoViewModelFactory
+import com.droidtechlab.yahooapi.ui.viewmodels.Interactor
+import com.droidtechlab.yahooapi.ui.viewmodels.InteractorVMFactory
 import com.droidtechlab.yahooapi.ui.viewmodels.MatchInfoViewModel
 
 
 class MatchInfoFragment : BaseFragment() {
 
     private lateinit var matchInfoViewModel: MatchInfoViewModel
+    private lateinit var interactor: Interactor
     private lateinit var yahooDao: YahooDao
     private lateinit var mBinding: FragmentMatchInfoBinding
 
@@ -40,12 +42,23 @@ class MatchInfoFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         yahooDao = DBInstance.getDbInstance(requireContext()).yahooDao()
-        matchInfoViewModel = ViewModelProvider(
+        interactor = ViewModelProvider(
             this,
-            MatchInfoViewModelFactory(DataSourceRepo(requireActivity(), ApiClient.apiClient!!, yahooDao))
-        ).get(MatchInfoViewModel::class.java)
-        mBinding.group = matchInfoViewModel
-        mBinding.executePendingBindings()
+            InteractorVMFactory(
+                DataSourceRepo(
+                    requireActivity(),
+                    ApiClient.apiClient!!,
+                    yahooDao
+                )
+            )
+        ).get(Interactor::class.java)
+        matchInfoViewModel = ViewModelProvider(this).get(MatchInfoViewModel::class.java)
+
+
+        mBinding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            group = matchInfoViewModel
+        }
         initToolBar()
         loadData()
     }
@@ -57,14 +70,13 @@ class MatchInfoFragment : BaseFragment() {
         }
     }
 
-    fun loadData() {
+    private fun loadData() {
         if (consumeCallback()) return
 
-        matchInfoViewModel.fetchMatchInfo().observe(viewLifecycleOwner, Observer { result ->
+        interactor.fetchMatchInfo().observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Success -> {
                     matchInfoViewModel.updateUI(result.data)
-                    mBinding.executePendingBindings()
                 }
                 is Failure -> {
                 }

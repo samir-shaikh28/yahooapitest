@@ -1,50 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="false">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#eee"
-            tools:context=".ui.SplashScreenFragment">
+            android:background="#fff"
+            android:orientation="vertical">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbar"
+            <ViewStub
+                android:id="@+id/stub"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/purple_700"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="visible">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/purple_700"
-                    android:textSize="21sp"
-                    app:contentInsetStartWithNavigation="16dp"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                    app:titleTextColor="@color/white" />
-
-            </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
+                android:background="#eee"
+                android:clipToPadding="false"
                 android:padding="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/appbar" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+       />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

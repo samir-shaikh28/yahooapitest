@@ -4,7 +4,7 @@
     <data>
         <variable
             name="group"
-            type="com.droidtechlab.yahooapi.ui.listitem.SubTitleListItem" />
+            type="com.droidtechlab.yahooapi.ui.viewholders.SubTitleViewHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

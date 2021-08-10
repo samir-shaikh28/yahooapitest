@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="group"
+            type="com.droidtechlab.yahooapi.ui.viewholders.PlayerViewHolder" />
+    </data>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        style="@style/Base.Theme.MaterialCardView"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="12dp"
+            android:background="@drawable/bg_player"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{group.playerEntity.fullName}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@{@string/position(group.playerEntity.position)}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_player_name" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_batting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Batting:"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_position" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_style_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Style"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_batting"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_average_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Average"
+                app:layout_constraintLeft_toRightOf="@id/batting_style_head"
+                app:layout_constraintTop_toBottomOf="@id/title_batting"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_strike_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Style"
+                app:layout_constraintLeft_toRightOf="@id/batting_average_head"
+                app:layout_constraintTop_toBottomOf="@id/title_batting"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_runs_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Runs"
+                app:layout_constraintLeft_toRightOf="@id/batting_strike_head"
+                app:layout_constraintTop_toBottomOf="@id/title_batting"
+                app:layout_constraintWidth_percent="0.25" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.battingInfo.style}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/batting_style_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_average"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.battingInfo.average}"
+                app:layout_constraintLeft_toRightOf="@id/batting_style"
+                app:layout_constraintTop_toBottomOf="@id/batting_average_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_strike"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.battingInfo.strikeRate}"
+                app:layout_constraintLeft_toRightOf="@id/batting_average"
+                app:layout_constraintTop_toBottomOf="@id/batting_strike_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_runs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.battingInfo.runs}"
+                app:layout_constraintLeft_toRightOf="@id/batting_strike"
+                app:layout_constraintTop_toBottomOf="@id/batting_runs_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+
+            <!--    Bowling  -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_bowling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Bowling:"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/batting_runs" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bowling_style_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Style"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_bowling"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bowling_average_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Average"
+                app:layout_constraintLeft_toRightOf="@id/bowling_style_head"
+                app:layout_constraintTop_toBottomOf="@id/title_bowling"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/batting_economy_rate_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Economy Rate"
+                app:layout_constraintLeft_toRightOf="@id/bowling_average_head"
+                app:layout_constraintTop_toBottomOf="@id/title_bowling"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bowling_wicket_head"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Wicket"
+                app:layout_constraintLeft_toRightOf="@id/batting_economy_rate_head"
+                app:layout_constraintTop_toBottomOf="@id/title_bowling"
+                app:layout_constraintWidth_percent="0.25" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bowling_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.bowlingInfo.style}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bowling_style_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bowling_average"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.bowlingInfo.average}"
+                app:layout_constraintLeft_toRightOf="@id/bowling_style"
+                app:layout_constraintTop_toBottomOf="@id/bowling_average_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bowling_economy_rate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.bowlingInfo.economyRate}"
+                app:layout_constraintLeft_toRightOf="@id/bowling_average"
+                app:layout_constraintTop_toBottomOf="@id/batting_economy_rate_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bowling_wickets"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@{group.playerEntity.bowlingInfo.wickets}"
+                app:layout_constraintLeft_toRightOf="@id/bowling_economy_rate"
+                app:layout_constraintTop_toBottomOf="@id/bowling_wicket_head"
+                app:layout_constraintWidth_percent="0.25" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

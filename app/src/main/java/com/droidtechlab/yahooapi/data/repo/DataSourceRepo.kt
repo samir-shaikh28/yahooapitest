@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.droidtechlab.yahooapi.data.db.DBHelper
 import com.droidtechlab.yahooapi.data.db.dao.YahooDao
 import com.droidtechlab.yahooapi.data.db.entities.CommentaryEntity
+import com.droidtechlab.yahooapi.data.db.entities.InningsEntity
 import com.droidtechlab.yahooapi.data.db.entities.MatchInfoEntity
+import com.droidtechlab.yahooapi.data.db.entities.PlayerEntity
 import com.droidtechlab.yahooapi.data.network.APIEndPoints
 import com.droidtechlab.yahooapi.data.network.Failure
 import com.droidtechlab.yahooapi.data.network.Results
@@ -69,7 +71,7 @@ class DataSourceRepo(
                             id,
                             player
                         )
-                    dao.insertPlayerData(playerEntity)
+                   dao.insertPlayerData(playerEntity)
                 }
             }
             // Insert  Innings Data
@@ -106,7 +108,93 @@ class DataSourceRepo(
         return liveData
     }
 
-    fun getScoreData() {
+    fun fetchCommentary(): MutableLiveData<Results<List<CommentaryEntity>>> {
+        val liveData: MutableLiveData<Results<List<CommentaryEntity>>> = MutableLiveData()
+        compositeDisposable.add(
+            Observable.fromCallable {
+                dao.getCommentaryData()
+            }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ response ->
+                    liveData.postValue(Success(response))
+                }, { t: Throwable? ->
+                    liveData.postValue(
+                        Failure(
+                            t
+                                ?: Throwable("Exception is null")
+                        )
+                    )
+                })
+        )
+        return liveData
+    }
 
+    fun fetchTeamName(): MutableLiveData<Results<List<String>>> {
+        val liveData: MutableLiveData<Results<List<String>>> = MutableLiveData()
+        compositeDisposable.add(
+            Observable.fromCallable {
+                dao.getTeamShortNameList()
+            }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ response ->
+                    liveData.postValue(Success(response))
+                }, { t: Throwable? ->
+                    liveData.postValue(
+                        Failure(
+                            t
+                                ?: Throwable("Exception is null")
+                        )
+                    )
+                })
+        )
+        return liveData
+    }
+
+    fun fetchTeamPlayersSummary(teamName: String): MutableLiveData<Results<List<PlayerEntity>>> {
+        val liveData: MutableLiveData<Results<List<PlayerEntity>>> = MutableLiveData()
+        compositeDisposable.add(
+            Observable.fromCallable {
+                dao.fetchTeamPlayerSummary(teamName)
+            }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ response ->
+                    liveData.postValue(Success(response))
+                }, { t: Throwable? ->
+                    liveData.postValue(
+                        Failure(
+                            t
+                                ?: Throwable("Exception is null")
+                        )
+                    )
+                })
+        )
+        return liveData
+    }
+
+    fun fetchInningsData(): MutableLiveData<Results<List<InningsEntity>>> {
+        val liveData: MutableLiveData<Results<List<InningsEntity>>> = MutableLiveData()
+        compositeDisposable.add(
+            Observable.fromCallable {
+                dao.fetchInningsData()
+            }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ response ->
+                    liveData.postValue(Success(response))
+                }, { t: Throwable? ->
+                    liveData.postValue(
+                        Failure(
+                            t
+                                ?: Throwable("Exception is null")
+                        )
+                    )
+                })
+        )
+        return liveData
+    }
+
+    fun dispose() {
+        if(!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
     }
 }

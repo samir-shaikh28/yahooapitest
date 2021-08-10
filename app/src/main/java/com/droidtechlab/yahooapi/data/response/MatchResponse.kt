@@ -135,7 +135,7 @@ data class BowlersObj(
 @Parcelize
 data class FallofWickets(
     @SerializedName("Overs") var overs: String? = null,
-    @SerializedName("Scores") var scores: String? = null,
+    @SerializedName("Score") var scores: String? = null,
     @SerializedName("Batsman") var batsmanId: String? = null
 ) : Parcelable
 

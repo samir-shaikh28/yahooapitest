@@ -1,60 +1,88 @@
 package com.droidtechlab.yahooapi.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.droidtechlab.yahooapi.R
+import com.droidtechlab.yahooapi.data.db.DBInstance
+import com.droidtechlab.yahooapi.data.db.dao.YahooDao
+import com.droidtechlab.yahooapi.data.network.ApiClient
+import com.droidtechlab.yahooapi.data.network.Error
+import com.droidtechlab.yahooapi.data.network.Failure
+import com.droidtechlab.yahooapi.data.network.Success
+import com.droidtechlab.yahooapi.data.repo.DataSourceRepo
+import com.droidtechlab.yahooapi.databinding.FragmentSummaryBinding
+import com.droidtechlab.yahooapi.ui.adapter.TeamSummaryPagerAdapter
+import com.droidtechlab.yahooapi.ui.viewmodels.Interactor
+import com.droidtechlab.yahooapi.ui.viewmodels.InteractorVMFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SummaryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SummaryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SummaryFragment : BaseFragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var yahooDao: YahooDao
+    private lateinit var interactor: Interactor
+    private lateinit var mBinding: FragmentSummaryBinding
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_summary, container, false)
+        return mBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        yahooDao = DBInstance.getDbInstance(requireContext()).yahooDao()
+        interactor = ViewModelProvider(
+            this,
+            InteractorVMFactory(
+                DataSourceRepo(
+                    requireActivity(),
+                    ApiClient.apiClient!!,
+                    yahooDao
+                )
+            )
+        ).get(Interactor::class.java)
+        initToolBar()
+        loadData()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun initToolBar() {
+        mBinding.toolbar.apply {
+            setSupportActionBar(this)
+            actionBar?.title = "Teams"
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_summary, container, false)
-    }
+    private fun loadData() {
+        if (consumeCallback()) return
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SummaryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SummaryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        interactor.fetchTeamName().observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is Success -> {
+                    val adapter = TeamSummaryPagerAdapter(childFragmentManager, result.data)
+                    mBinding.viewpager.adapter =  adapter
+                    mBinding.tabLayout.setupWithViewPager(mBinding.viewpager)
                 }
+                is Failure -> {
+                    Log.d("###", "fetch comment failure")
+                }
+                is Error -> {
+                    Log.d("###", "fetch comment error")
+                }
+
             }
+        })
+
     }
 }

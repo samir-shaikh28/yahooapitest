@@ -6,15 +6,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.droidtechlab.yahooapi.data.db.TABLE_INNINGS_ENTITY
-import com.droidtechlab.yahooapi.data.db.entities.converters.BatsmanInningsEntityConverts
-import com.droidtechlab.yahooapi.data.db.entities.converters.BowlerInningsEntityConverts
+import com.droidtechlab.yahooapi.data.db.entities.converters.*
 import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
 @Entity(tableName = TABLE_INNINGS_ENTITY)
 data class InningsEntity(
-    @PrimaryKey(autoGenerate = true)  var _id: Long,
+    @PrimaryKey  var _id: Int,
     @ColumnInfo(name = "batting_team") var battingTeam: String?,
     @ColumnInfo(name = "number") var number: String?,
     @ColumnInfo(name = "total") var total: String?,
@@ -27,10 +26,11 @@ data class InningsEntity(
     @ColumnInfo(name = "no_balls") var noBalls: String?,
     @ColumnInfo(name = "penalty") var penalty: String?,
     @ColumnInfo(name = "allotted_overs") var allotedOvers: String?,
-    @ColumnInfo(name = "batsmen") @TypeConverters(BatsmanInningsEntityConverts::class) var batsmanList: List<BatsmenInInningsEntity>?,
-    @ColumnInfo(name = "bowlers") @TypeConverters(BowlerInningsEntityConverts::class) var bowlerList: List<BowlerInInningsEntity>?,
-    @ColumnInfo(name = "partnership_current") var currentartnerShip: CurrentPartnerShipEntity?,
-    @ColumnInfo(name = "power_play") var powerPlay: PowerPlayEntity?,
+    @ColumnInfo(name = "batsmen") @TypeConverters(BatsmanInningsEntityConverts::class) var batsmanList: ArrayList<BatsmenInInningsEntity>?,
+    @ColumnInfo(name = "bowlers") @TypeConverters(BowlerInningsEntityConverts::class) var bowlerList: ArrayList<BowlerInInningsEntity>?,
+    @ColumnInfo(name = "fall_of_wockets") @TypeConverters(FallOfWicketEntityConverters::class) var fallOfWicketList: ArrayList<FallOfWicketEntity>?,
+    @ColumnInfo(name = "partnership_current")  @TypeConverters(CurrentPartnerShipEntityConverts::class) var currentartnerShip: CurrentPartnerShipEntity?,
+    @ColumnInfo(name = "power_play")  @TypeConverters(PowerPlayEntityConverter::class)  var powerPlay: PowerPlayEntity?,
 ) : Parcelable
 
 @Parcelize
@@ -65,7 +65,15 @@ data class BowlerInInningsEntity(
 data class CurrentPartnerShipEntity(
     @ColumnInfo(name = "runs") var runs: String? = null,
     @ColumnInfo(name = "balls") var balls: String? = null,
-    @ColumnInfo(name = "batsman") var partnerBatsmen: List<PartnerBatsmenEntity>? = null,
+    @ColumnInfo(name = "batsman")  @TypeConverters(PartnerBatsmanConverter::class) var partnerBatsmen: ArrayList<PartnerBatsmenEntity>? = null,
+) : Parcelable
+
+
+@Parcelize
+data class FallOfWicketEntity(
+    @ColumnInfo(name = "score") var score: String? = null,
+    @ColumnInfo(name = "over") var overs: String? = null,
+    @ColumnInfo(name = "batsman") var batsmanCode: String? = null,
 ) : Parcelable
 
 @Parcelize

@@ -6,4 +6,17 @@
     <string name="series">Series</string>
     <string name="weather">Todays Weather</string>
     <string name="status">Status</string>
+    <string name="result">Result</string>
+    <string name="venue">Venue</string>
+    <string name="date">Date</string>
+    <string name="man_of_match">Man of the match</string>
+    <string name="referee">Referee</string>
+    <string name="umpires">umpires</string>
+    <string name="toss_won_by">Toss won by</string>
+    <string name="toss_won_by_team">Toss won by team: %s</string>
+    <string name="position">Position: %s</string>
+    <string name="inning">%s Inning</string>
+    <string name="player_code">Player Code: %s</string>
+    <string name="scores">Scores: %s</string>
+    <string name="overs">Overs: %s</string>
 </resources>

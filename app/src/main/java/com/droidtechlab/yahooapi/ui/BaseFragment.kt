@@ -31,6 +31,8 @@ open class BaseFragment : Fragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+
+
     protected fun setSupportActionBar(toolbar: Toolbar) {
         appCompatActivity?.setSupportActionBar(toolbar)
     }

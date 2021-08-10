@@ -7,19 +7,19 @@ import com.google.gson.reflect.TypeToken
 
 object BatsmanInningsEntityConverts {
     private val gson = Gson()
-    private val type = object : TypeToken<List<BatsmenInInningsEntity>>() {}.type
+    private val type = object : TypeToken<ArrayList<BatsmenInInningsEntity>>() {}.type
 
     @TypeConverter
     @JvmStatic
-    fun stringToNestedData(json: String?): List<BatsmenInInningsEntity>? {
+    fun stringToNestedData(json: String?): ArrayList<BatsmenInInningsEntity>? {
         return if (json == null) {
             null
-        } else gson.fromJson<List<BatsmenInInningsEntity>>(json, type)
+        } else gson.fromJson<ArrayList<BatsmenInInningsEntity>>(json, type)
     }
 
     @TypeConverter
     @JvmStatic
-    fun nestedDataToString(nestedData: List<BatsmenInInningsEntity>?): String? {
+    fun nestedDataToString(nestedData: ArrayList<BatsmenInInningsEntity>?): String? {
         return if (nestedData == null) {
             null
         } else gson.toJson(nestedData, type)

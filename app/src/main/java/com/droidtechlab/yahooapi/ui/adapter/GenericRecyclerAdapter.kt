@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.droidtechlab.yahooapi.ui.listitem.AbstractListItem
+import com.droidtechlab.yahooapi.ui.viewholders.AbstractViewHolder
 import com.droidtechlab.yahooapi.BR
 
-class GenericRecyclerAdapter(private val listCustomModel: List<AbstractListItem>) :
+class GenericRecyclerAdapter(private val listCustomModel: List<AbstractViewHolder>) :
     RecyclerView.Adapter<GenericRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(private val bind: ViewDataBinding) : RecyclerView.ViewHolder(bind.root) {

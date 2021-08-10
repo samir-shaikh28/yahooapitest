@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="group"
+            type="com.droidtechlab.yahooapi.ui.viewholders.InningViewHolder" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Base.Theme.MaterialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{group::openInningsPagerScreen}"
+        android:background="@color/white">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_player"
+            android:padding="12dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{@string/inning(group.inningsEntity.number)}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_batting_team_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Batting team:"
+
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_player_name"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_batting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{group.inningsEntity.battingTeam}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintLeft_toRightOf="@id/txt_batting_team_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_player_name"
+                app:layout_constraintWidth_percent="0.5" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_total_run_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Total Runs:"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_batting_team_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_total_run"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{group.inningsEntity.total}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintLeft_toRightOf="@id/txt_total_run_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_batting_team_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_wickets_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Wickets:"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_total_run_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_wickets"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{group.inningsEntity.wickets}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintLeft_toRightOf="@id/txt_wickets_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_total_run_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_over_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Overs:"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_wickets_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_overs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{group.inningsEntity.overs}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintLeft_toRightOf="@id/txt_over_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_wickets_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_run_rate_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Run Rate:"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_over_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_run_rate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{group.inningsEntity.runRate}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintLeft_toRightOf="@id/txt_run_rate_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_over_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_no_ball_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="No Balls:"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_run_rate_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_no_ball"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{group.inningsEntity.noBalls}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintLeft_toRightOf="@id/txt_no_ball_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_run_rate_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

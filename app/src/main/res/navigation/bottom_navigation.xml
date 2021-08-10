@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_nav_graph.xml"
     app:startDestination="@id/summaryFragment">
 
     <fragment
         android:id="@+id/summaryFragment"
         android:name="com.droidtechlab.yahooapi.ui.SummaryFragment"
-        android:label="fragment_summary"
-        tools:layout="@layout/fragment_summary" />
+        android:label="fragment_summary" />
     <fragment
         android:id="@+id/scoreCardFragment"
         android:name="com.droidtechlab.yahooapi.ui.ScoreCardFragment"
-        android:label="fragment_score_card"
-        tools:layout="@layout/fragment_score_card" />
+        android:label="fragment_score_card" >
+        <action
+            android:id="@+id/action_scoreCardFragment_to_inningsParentFragment"
+            app:destination="@id/inningsParentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/commentaryFragment"
         android:name="com.droidtechlab.yahooapi.ui.CommentaryFragment"
-        android:label="fragment_commentary"
-        tools:layout="@layout/fragment_commentary" />
+        android:label="fragment_commentary" />
     <fragment
         android:id="@+id/matchInfoFragment"
         android:name="com.droidtechlab.yahooapi.ui.MatchInfoFragment"
-        android:label="fragment_match_info"
-        tools:layout="@layout/fragment_match_info" />
+        android:label="fragment_match_info" />
+    <fragment
+        android:id="@+id/inningsParentFragment"
+        android:name="com.droidtechlab.yahooapi.ui.InningsParentFragment"
+        android:label="InningsParentFragment" />
 
 </navigation>

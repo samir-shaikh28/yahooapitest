@@ -1,5 +1,6 @@
 package com.droidtechlab.yahooapi.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,24 +17,25 @@ import com.droidtechlab.yahooapi.data.network.Success
 import com.droidtechlab.yahooapi.data.repo.DataSourceRepo
 import com.droidtechlab.yahooapi.ui.viewholders.AbstractViewHolder
 import com.droidtechlab.yahooapi.ui.viewholders.CommentViewHolder
+import com.droidtechlab.yahooapi.ui.viewholders.PlayerViewHolder
 import com.droidtechlab.yahooapi.ui.viewmodels.Interactor
 import com.droidtechlab.yahooapi.ui.viewmodels.InteractorVMFactory
 import com.google.android.material.appbar.AppBarLayout
 
-class CommentaryFragment : GenericRecyclerFragment() {
+class PlayerListFragment : GenericRecyclerFragment() {
 
     private lateinit var yahooDao: YahooDao
     private lateinit var interactor: Interactor
-    private var toolbar: Toolbar? = null
-    private var appBar: AppBarLayout? = null
+    private var teamName: String = ""
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        arguments?.apply {
+            teamName = getString(TEAM_NAME) ?: ""
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setStubView(R.layout.lyt_toolbar)
-
-        toolbar = stubView?.findViewById(R.id.toolbar)
-        appBar = stubView?.findViewById(R.id.appbar)
-
         yahooDao = DBInstance.getDbInstance(requireContext()).yahooDao()
         interactor = ViewModelProvider(
             this,
@@ -45,41 +47,43 @@ class CommentaryFragment : GenericRecyclerFragment() {
                 )
             )
         ).get(Interactor::class.java)
-        initToolBar()
         super.onViewCreated(view, savedInstanceState)
     }
-
-
-    private fun initToolBar() {
-        toolbar?.apply {
-            setSupportActionBar(this)
-            actionBar?.title = "Commentary"
-        }
-    }
-
 
     override fun loadData() {
         if (consumeCallback()) return
         val listOfComments = mutableListOf<AbstractViewHolder>()
 
-        interactor.fetchCommentary().observe(viewLifecycleOwner, Observer { result ->
-            when (result) {
-                is Success -> {
-                    Log.d("###", "fetch comment success")
-                    result.data.forEach {
-                        Log.d("###", "comment:  ${it.comment}")
-                        listOfComments.add(CommentViewHolder(it.comment))
+        interactor.fetchTeamPlayersSummary(teamName)
+            .observe(viewLifecycleOwner, Observer { result ->
+                when (result) {
+                    is Success -> {
+                        result.data.forEach {
+                            listOfComments.add(PlayerViewHolder(it))
+                        }
+                        updateList(listOfComments)
                     }
-                    updateList(listOfComments)
-                }
-                is Failure -> {
-                    Log.d("###", "fetch comment failure")
-                }
-                is Error -> {
-                    Log.d("###", "fetch comment error")
-                }
+                    is Failure -> {
+                        Log.d("###", "fetch comment failure")
+                    }
+                    is Error -> {
+                        Log.d("###", "fetch comment error")
+                    }
 
+                }
+            })
+    }
+
+    companion object {
+
+        private const val TEAM_NAME = "team_name"
+
+        @JvmStatic
+        fun getInstance(teamName: String) =
+            PlayerListFragment().apply {
+                arguments = Bundle().apply {
+                    putString(TEAM_NAME, teamName)
+                }
             }
-        })
     }
 }

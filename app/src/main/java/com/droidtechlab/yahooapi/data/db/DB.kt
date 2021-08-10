@@ -10,12 +10,13 @@ import com.droidtechlab.yahooapi.data.db.entities.MatchInfoEntity
 import com.droidtechlab.yahooapi.data.db.entities.PlayerEntity
 import com.droidtechlab.yahooapi.data.db.entities.converters.*
 
-const val DB_VERSION = 1
+const val DB_VERSION = 2
 const val TABLE_PLAYER_ENTITY = "table_player"
 const val TABLE_INNINGS_ENTITY = "table_innings"
 const val TABLE_COMMENTARY_ENTITY = "table_commentary"
 const val TABLE_MATCH_ENTITY = "match_info_player"
 const val TEAM_ID = "team_id"
+const val TEAM_SHORT_NAME = "team_short_name"
 
 @Database(
     entities = [PlayerEntity::class, CommentaryEntity::class, MatchInfoEntity::class, InningsEntity::class],
@@ -28,7 +29,9 @@ const val TEAM_ID = "team_id"
     BatsmanInningsEntityConverts::class,
     BowlerInningsEntityConverts::class,
     CurrentPartnerShipEntityConverts::class,
-    PowerPlayEntityConverter::class
+    PowerPlayEntityConverter::class,
+    FallOfWicketEntityConverters::class,
+    PartnerBatsmanConverter::class
 )
 abstract class DB : RoomDatabase() {
     abstract fun yahooDao(): YahooDao
